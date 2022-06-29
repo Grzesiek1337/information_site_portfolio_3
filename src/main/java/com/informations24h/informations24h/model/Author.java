@@ -23,7 +23,7 @@ public class Author {
     @Column(unique = true)
     @NotBlank
     @Size(min = 3,max=20)
-    private String authoname;
+    private String username;
     @NotBlank
     @Size(min = 3,max=255)
     private String password;
