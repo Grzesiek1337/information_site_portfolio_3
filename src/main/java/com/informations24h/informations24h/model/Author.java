@@ -30,4 +30,10 @@ public class Author {
     private String role;
     private boolean enabled;
 
+    public Author(String username, String password, String role, boolean enabled) {
+        this.username = username;
+        this.password = password;
+        this.role = role;
+        this.enabled = enabled;
+    }
 }
