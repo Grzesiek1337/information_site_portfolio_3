@@ -34,4 +34,9 @@ public class Post {
 
     private LocalDate postUpdated;
 
+    public Post(String postTitle, String postContent, LocalDate postCreated) {
+        this.postTitle = postTitle;
+        this.postContent = postContent;
+        this.postCreated = postCreated;
+    }
 }
