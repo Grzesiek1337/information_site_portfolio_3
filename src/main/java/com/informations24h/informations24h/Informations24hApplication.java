@@ -4,6 +4,9 @@ import org.modelmapper.ModelMapper;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.validation.beanvalidation.LocalValidatorFactoryBean;
+
+import javax.validation.Validator;
 
 @SpringBootApplication
 public class Informations24hApplication {
@@ -15,5 +18,10 @@ public class Informations24hApplication {
 	@Bean
 	public ModelMapper modelMapper() {
 		return new ModelMapper();
+	}
+
+	@Bean
+	public Validator validator() {
+		return new LocalValidatorFactoryBean();
 	}
 }
