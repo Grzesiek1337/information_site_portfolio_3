@@ -45,7 +45,7 @@ public class AuthorService implements IAuthorService {
         authorRepository.deleteById(id);
     }
 
-    public void encodePasswordSetEnableANdSave(Author author) {
+    public void encodePasswordSetEnableAndSave(Author author) {
         author.setPassword(bCryptPasswordEncoder.encode(author.getPassword()));
         author.setEnabled(true);
         authorRepository.save(author);
