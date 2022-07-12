@@ -46,7 +46,7 @@ public class StandardRestController {
         authorDto.setUsername("GrzegorzM");
         authorDto.setPassword("123");
         authorDto.setRole("ROLE_ADMIN");
-        authorService.encodePasswordSetEnableANdSave(convertAuthorDtoToEntity(authorDto));
+        authorService.encodePasswordSetEnableAndSave(convertAuthorDtoToEntity(authorDto));
         logger.info("Admin has been created.");
         return "success";
     }
