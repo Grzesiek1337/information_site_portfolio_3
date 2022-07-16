@@ -14,5 +14,10 @@
     <a class="text-decoration-none"
        th:text="${'Current date: ' + #temporals.format(localDateTime, 'dd-MM-yyyy HH:mm')}"></a>
 </div>
+<div class="p-2" sec:authorize="isAuthenticated()">
+    <form th:action="@{/logout}" method="post">
+        <input class="btn btn-outline-info" type="submit" value="Logout"/>
+    </form>
+</div>
 </body>
 </html>
