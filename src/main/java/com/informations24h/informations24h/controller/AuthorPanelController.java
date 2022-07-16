@@ -7,17 +7,19 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.time.LocalDateTime;
-
+@RequestMapping("/author")
 @Controller
 public class AuthorPanelController {
 
     @Autowired
     private AuthorService authorService;
 
+
     @ModelAttribute("author")
-    public String getAuthor(@AuthenticationPrincipal CurrentUserDetails currentUserDetails) {
+    public String getAuthorName(@AuthenticationPrincipal CurrentUserDetails currentUserDetails) {
         return currentUserDetails.getAuthor().getUsername();
     }
 
@@ -26,7 +28,7 @@ public class AuthorPanelController {
         return LocalDateTime.now();
     }
 
-    @GetMapping("/author-panel")
+    @GetMapping("/panel")
     public String getAuthorPanel() {
         return "author/panel";
     }
