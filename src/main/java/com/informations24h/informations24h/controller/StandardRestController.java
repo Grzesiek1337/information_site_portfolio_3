@@ -7,6 +7,7 @@ import org.apache.log4j.Logger;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.time.LocalDate;
@@ -14,6 +15,7 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 
 @RestController
+@RequestMapping("/secret-service")
 public class StandardRestController {
 
     private static final Logger logger = Logger.getLogger(StandardRestController.class);
@@ -25,7 +27,7 @@ public class StandardRestController {
     @GetMapping("/getAuthor")
     public String getAuthor() {
         logger.info("Author checked at " + LocalDateTime.now());
-        return convertAuthorToDto(new Author("grzesiek1988","123","ADMIN",true)).toString();
+        return authorService.convertAuthorToDto(new Author("grzesiek1988","123","ADMIN",true)).toString();
     }
 
     @GetMapping("/getDate")
@@ -46,18 +48,8 @@ public class StandardRestController {
         authorDto.setUsername("GrzegorzM");
         authorDto.setPassword("123");
         authorDto.setRole("ROLE_ADMIN");
-        authorService.encodePasswordSetEnableAndSave(convertAuthorDtoToEntity(authorDto));
+        authorService.encodePasswordSetEnableAndSave(authorService.convertAuthorDtoToEntity(authorDto));
         logger.info("Admin has been created.");
         return "success";
     }
-
-    public AuthorDto convertAuthorToDto(Author author) {
-        return modelMapper.map(author,AuthorDto.class);
-    }
-
-    public Author convertAuthorDtoToEntity(AuthorDto authorDto) {
-        return modelMapper.map(authorDto,Author.class);
-    }
-
-
 }
